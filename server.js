@@ -8,6 +8,10 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
+    res.render("home");
+});
+
+app.get("/dashboard", (req, res) => {
   const today = new Date();
   const employeeData = employees.map((emp) => {
     const expiry = new Date(emp.expiryDate);
