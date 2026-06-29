@@ -7,29 +7,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="/css/footer.css">
     <style>
         body {
             background: #f5f7fa;
             padding-bottom: 80px;
         }
+
         .navbar {
             min-height: 42px;
         }
+
         .menu-link {
             color: white !important;
             padding: 10px 18px !important;
             border-right: 1px solid rgba(255, 255, 255, .4);
             font-size: 1rem;
         }
+
         .menu-link:hover {
             background: #174a7b;
             text-decoration: underline;
         }
+
         .hero-section {
             position: relative;
             height: 280px;
             overflow: hidden;
         }
+
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -44,6 +51,7 @@
                     rgba(10, 54, 105, .15) 55%,
                     transparent 100%);
         }
+
         .hero-content {
             position: absolute;
             left: 80px;
@@ -51,27 +59,33 @@
             transform: translateY(-50%);
             color: white;
         }
+
         .hero-content h1 {
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 10px;
         }
+
         .hero-content p {
             font-size: 1rem;
             max-width: 450px;
             margin: 0;
         }
+
         .card {
             border: none;
             border-radius: 12px;
         }
+
         .table {
             margin-bottom: 0;
         }
+
         .section-heading {
             font-weight: 700;
             color: #1f5d99;
         }
+
         .dsc-card {
             position: relative;
             background: #cfe4fb;
@@ -82,9 +96,11 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
             transition: .5s;
         }
+
         .dsc-card:hover {
             transform: translateY(-10px);
         }
+
         .dsc-icon {
             position: absolute;
             top: -28px;
@@ -101,18 +117,22 @@
             font-size: 1.6rem;
             border: 6px solid white;
         }
+
         .dsc-card h5 {
             color: #1f5d99;
             font-weight: 600;
             margin-bottom: 12px;
         }
+
         .dsc-card h2 {
             font-weight: 700;
             color: #0d3f74;
         }
+
         .table {
             margin-bottom: 0;
         }
+
         .table thead th {
             background: #1f5d99 !important;
             color: white !important;
@@ -120,33 +140,93 @@
             border: none;
             padding: 15px;
         }
+
         .table tbody td {
             padding: 15px;
             vertical-align: middle;
         }
+
         .table tbody tr:hover {
             background: #f8fbff;
         }
+
         .status-card {
             background: white;
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
         }
+
         .status-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
+
         .status-header input {
             width: 350px;
         }
+
         .title-line {
             width: 80px;
             height: 4px;
             background: #1f5d99;
             border-radius: 20px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .dsc-card {
+            cursor: pointer;
+        }
+
+        .dsc-card:hover {
+
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, .18);
+
+        }
+
+        .status-active {
+            background: #1e9d63;
+            color: #fff;
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-size: .85rem;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 105px;
+            text-align: center;
+        }
+
+        .status-expiring {
+            background: #ffc107;
+            color: #222;
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-size: .85rem;
+            font-weight: 600;
+            display: inline-block;
+            min-width: 105px;
+            text-align: center;
+        }
+
+        .filter-card.active-card {
+            background: #1f5d99;
+            color: white;
+        }
+
+        .filter-card.active-card h5,
+        .filter-card.active-card h2 {
+            color: white;
+        }
+
+        .filter-card.active-card .dsc-icon {
+            background: white;
+            color: #1f5d99;
         }
     </style>
 </head>
@@ -158,13 +238,16 @@
             <div class="container-fluid p-0">
 
                 <div class="hero-section">
-                    <div class="hero">
-                        <div class="hero-content">
-                            <h2>Digital Signature Certificate Monitoring </h2>
-                            <p>Automated monitoring and email alerts for DSC expiry.</p>
-                        </div>
-                    </div>
+
                     <img src="/images/dashboard.png" class="img-fluid w-100 h-100" style="object-fit:cover;">
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="hero-content">
+                        <h2>Digital Signature Certificate Monitoring</h2>
+                        <p>Automated monitoring and email alerts for DSC expiry.</p>
+                    </div>
+
                 </div>
 
             </div>
@@ -173,7 +256,7 @@
 
             <div class="row g-4">
                 <div class="col-md-3">
-                    <div class="dsc-card">
+                    <div class="dsc-card filter-card active-card" data-filter="all">
                         <div class="dsc-icon">
                             <i class="bi bi-people-fill"></i>
                         </div>
@@ -185,7 +268,7 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="dsc-card">
+                    <div class="dsc-card filter-card " data-filter="expiring">
                         <div class="dsc-icon">
                             <i class="bi bi-exclamation-circle-fill"></i>
                         </div>
@@ -194,23 +277,22 @@
                             <%= expiring %>
                         </h2>
                     </div>
-
                 </div>
 
                 <div class="col-md-3">
-                    <div class="dsc-card">
+                    <div class="dsc-card filter-card " data-filter="active">
                         <div class="dsc-icon">
                             <i class="bi bi-patch-check-fill"></i>
                         </div>
                         <h5>Active DSC</h5>
                         <h2>
-                            <%= total - expiring %>
+                            <%= active %>
                         </h2>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="dsc-card">
+                    <div class="dsc-card filter-card " data-filter="emails">
                         <div class="dsc-icon">
                             <i class="bi bi-envelope-fill"></i>
                         </div>
@@ -231,8 +313,9 @@
             <div class="status-card">
                 <div class="status-header">
                     <div>
-                        <h3><i class="fa-solid fa-id-card me-2"></i>
-                            DSC Status</h3>
+                        <h3 id="tableTitle">
+                            All Employees
+                        </h3>
                         <div class="title-line"></div>
                     </div>
                     <div>
@@ -256,7 +339,8 @@
 
                         <tbody>
                             <% employees.forEach((emp,index)=>{ %>
-                                <tr>
+                                <tr data-status="<%= emp.status %>"
+                                    data-email="<%= emp.status==='Expiring Soon' ? 'yes':'no' %>">
                                     <td>
                                         <%= index + 1 %>
                                     </td>
@@ -274,12 +358,16 @@
                                     </td>
                                     <td>
                                         <% if(emp.status==="Active" ){ %>
-                                            <span class="badge bg-success px-3 py-2">Active</span>
+                                            <span class="status-active">
+                                                Active
+                                            </span>
                                             <% } else { %>
-                                                <span class="badge bg-warning text-dark px-3 py-2">Expiring</span>
+                                                <span class="status-expiring">
+                                                    Expiring Soon
+                                                </span>
                                                 <% } %>
                                     </td>
-                                    
+
                                 </tr>
                                 <% }) %>
                         </tbody>
@@ -290,6 +378,60 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+
+            const cards = document.querySelectorAll(".filter-card");
+            const rows = document.querySelectorAll("tbody tr");
+            const title = document.getElementById("tableTitle");
+
+            cards.forEach(card => {
+
+                card.addEventListener("click", () => {
+
+                    cards.forEach(c => c.classList.remove("active-card"));
+
+                    card.classList.add("active-card");
+
+                    const filter = card.dataset.filter;
+
+                    const titles = {
+                        all: "All Employees",
+                        active: "Active Certificates",
+                        expiring: "Expiring Certificates",
+                        emails: "Employees Notified"
+                    };
+
+                    title.innerText = titles[filter];
+
+                    rows.forEach(row => {
+
+                        const status = row.dataset.status;
+                        const email = row.dataset.email;
+
+                        let show = false;
+
+                        if (filter === "all")
+                            show = true;
+
+                        if (filter === "active" && status === "Active")
+                            show = true;
+
+                        if (filter === "expiring" && status === "Expiring Soon")
+                            show = true;
+
+                        if (filter === "emails" && email === "yes")
+                            show = true;
+
+                        row.style.display = show ? "" : "none";
+
+                    });
+
+                });
+
+            });
+
+        </script>
 
 </body>
 

@@ -1,0 +1,45 @@
+<%- include("partials/navbar") %>
+    <div class="container mt-5">
+        <h2 class="mb-4">
+            <%= title %>
+        </h2>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Expiry Date</th>
+                    <th>Days Left</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% employees.forEach(emp=>{ %>
+                    <tr>
+                        <td>
+                            <%= emp.name %>
+                        </td>
+                        <td>
+                            <%= emp.email %>
+                        </td>
+                        <td>
+                            <%= emp.expiryDate %>
+                        </td>
+                        <td>
+                            <%= emp.daysLeft %>
+                        </td>
+                        <td>
+                            <% if(emp.status==="Active" ){ %>
+                                <span class="badge bg-success">Active</span>
+                                <% }else{ %>
+                                    <span class="badge bg-warning text-dark">
+                                        Expiring Soon
+                                    </span>
+                                    <% } %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
